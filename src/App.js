@@ -1,27 +1,53 @@
-import React from 'react';
+// import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+// function Hello(props) {
+//   return <h2>{props.title}</h2>
+// }
+
+// const Hello = (props) => <h2>{props.title}</h2>
+
+class Hello extends Component {
+  render() {
+    return <h2>{this.props.title}</h2>
+  }
+}
+
+class Text extends Component {
+  render() {
+
+    // const textDependsOn = this.props.boolean ? 'Cierto' : 'Falso';
+    const doubleNumbers = this.props.numbers.map(n => n * 2)
+
+    return (
+      <div>
+        {/* <p>{this.props.text}</p>
+        <p>{this.props.number}</p>
+        <p>{textDependsOn}</p> */}
+        <p>{this.props.complexObject.key1}</p>
+        <p>{this.props.numbers}</p>
+        <p>{this.props.numbers.join(',  ')}</p>
+        <p>{doubleNumbers.join(',  ')}</p>
+      </div>
+    )
+  }
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Bienvenidos al curso de react</h2>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h3>Vamos a aprender React</h3>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Hola mundo, estoy usando react</p>
-        <strong>This is a strong</strong>
+        <Hello title='Hello from props'/>
+        <Text 
+          boolean
+          complexObject = {{key1:'value1', key2:'value2'}}
+          number={2} 
+          numbers={[2, 3, 10]}
+          text='Text from component' 
+        />
       </header>
     </div>
   );
