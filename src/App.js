@@ -21,17 +21,15 @@ class Text extends Component {
     const {
       complexObject,
       doubleFunction,
-      numbers
+      numbers,
+      title
     } = this.props
-    // const textDependsOn = this.props.boolean ? 'Cierto' : 'Falso';
     const doubleNumbers = numbers.map(n => n * 2)
     const numbersFunction = numbers.map(doubleFunction)
 
     return (
       <div>
-        {/* <p>{this.props.text}</p>
-        <p>{this.props.number}</p>
-        <p>{textDependsOn}</p> */}
+        {title}
         <p>{complexObject.key1}</p>
         <p>{numbers}</p>
         <p>{numbers.join(', ')}</p>
@@ -54,7 +52,8 @@ function App() {
           doubleFunction = {(number) => number * 4}
           number={2} 
           numbers={[2, 3, 10]}
-          text='Text from component' 
+          text='Text from component'
+          title={<h1>Este es el título</h1>}
         />
       </header>
     </div>
