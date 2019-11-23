@@ -3,9 +3,9 @@ import './App.css';
 
 class Contador extends Component {
 
-  constructor() {
-    super()
-    this.state = { contador: 1}
+  constructor(props) {
+    super(props)
+    this.state = { contador: this.props.contadorInicial}
 
     setInterval(() => {
       this.setState(
@@ -15,8 +15,19 @@ class Contador extends Component {
   }
 
   render() {
-    return <span>{this.state.contador}</span>
+    return <ContadorNumero numero={this.state.contador} />
   }
+}
+
+Contador.defaultProps = {
+  contadorInicial: 0
+}
+
+class ContadorNumero extends Component {
+  render() {
+    //console.log('CondadorNumero render()')
+    return <span>{this.props.numero}</span>
+  } 
 }
 
 
@@ -25,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <p>Primer componente con State</p>
-      <Contador />
+      <Contador contadorInicial={5} />
     </div>
   );
 }
