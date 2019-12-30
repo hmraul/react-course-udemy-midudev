@@ -1,30 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import cars from './data/cars.json'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Bienvenidos al curso de react</h2>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h3>Vamos a aprender React</h3>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Hola mundo, estoy usando react</p>
-        <strong>This is a strong</strong>
-      </header>
-    </div>
-  );
+class CarItem extends Component {
+  render () {
+    const {car} = this.props
+
+    return (<li key={car.id}>
+      <p><strong>Modelo:</strong>{car.model}</p>
+      <p><strong>Marca:</strong>{car.company}</p>
+      </li>
+    )
+  }
+}
+
+class App extends Component {
+  render () {
+    return (
+      <div className='App'>
+        <h4>Trabajando con listas de objetos</h4>
+        <ul>
+          {
+            cars.map(car => {
+              return <CarItem key={car.id} car = {car} />
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
+}
+
+class SimpleListApp extends Component {
+  render () {
+    const numbers = [1, 1, 3, 4, 5];
+    return (
+      <div className='App'>
+        <h4>Trabajando con listas</h4>
+        {numbers.map((number, index) =>{
+        return <p key={index}>Soy el número {number}</p>
+        })}
+      </div>
+    )
+  }
 }
 
 export default App;

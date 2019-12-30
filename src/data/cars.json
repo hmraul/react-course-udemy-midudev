@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "model": "A3",
+    "company": "Audi"
+  },
+  {
+    "id": 2,
+    "model": "Mondeo",
+    "company": "Ford"
+  },
+  {
+    "id": 3,
+    "model": "Megane",
+    "company": "Renault"
+  },
+  {
+    "id": 4,
+    "model": "A200",
+    "company": "Mercedes"
+  }
+]
