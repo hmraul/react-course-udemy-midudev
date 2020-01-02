@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import './App.css';
 
 class Box extends Component {
@@ -15,16 +16,12 @@ class Box extends Component {
 }
 
 class Article extends Component {
-  constructor(props) {
-    super(props)
-     if (typeof(props.author === 'undefined')) {
-       console.warn('author prop is required')
-       // Si quieres forzar a que sea estricto (NO RECOMENDABLE) 
-       // se puede lanzar un error
-       // Ej:
-       // throw new Error('author prop is required')
-     }
+  static propTypes = {
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string,
+    title: PropTypes.string
   }
+
   render() {
     const { author, children, date, title } = this.props
 
@@ -45,22 +42,12 @@ class App extends Component {
       <div className='App'>
         <h4>Pobando Prop children</h4>
         <Article
-          author='Raul'
           date = {new Date().toLocaleDateString()}
           title = 'Curso de React'
         >
           <p>El contenido es dinámico para todos los posibles articles</p>
           <strong>Podemos añadir varios elementos</strong>
         </Article>
-        <Article
-          date = {new Date().toLocaleDateString()}
-          title = 'Usando la prop children'
-        >
-          <p>Aquí el contenido cambia</p>
-          <img 
-          src= 'https://imaging.nikon.com/lineup/dslr/d600/img/sample01/img_01.png'
-          alt = '' />
-        </Article>       
       </div>
     )
   }
