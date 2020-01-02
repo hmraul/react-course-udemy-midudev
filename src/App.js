@@ -15,18 +15,29 @@ class Box extends Component {
 }
 
 class Article extends Component {
+  constructor(props) {
+    super(props)
+     if (typeof(props.author === 'undefined')) {
+       console.warn('author prop is required')
+       // Si quieres forzar a que sea estricto (NO RECOMENDABLE) 
+       // se puede lanzar un error
+       // Ej:
+       // throw new Error('author prop is required')
+     }
+  }
   render() {
+    const { author, children, date, title } = this.props
+
     return(
       <section>
-        <h2>{this.props.title}</h2>
-        <p><em>Escrito por {this.props.author}</em></p>
-        <Box>{this.props.date}</Box>
-        <article>{this.props.children}</article>
+        <h2>{title}</h2>
+        {author && <p><em>Escrito por {author}</em></p>}
+        <Box>{date}</Box>
+        <article>{children}</article>
       </section>  
     )
   }
 }
-
 
 class App extends Component {
   render () {
@@ -42,7 +53,6 @@ class App extends Component {
           <strong>Podemos añadir varios elementos</strong>
         </Article>
         <Article
-          author='Raul'
           date = {new Date().toLocaleDateString()}
           title = 'Usando la prop children'
         >
