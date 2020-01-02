@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 
 export default class Form extends Component {
+  constructor() {
+    super()
+    this.state = {
+      inputName: '',
+      inputTwitter: '@',
+      inputTerms: false
+    }
+  }
   handleSubmit = (e) => {
     e.preventDefault()
-    const name = this.inputName.value
-    const twitter = document.getElementById('twitter').value
-    console.log({name,twitter})
-  }
-  hadleTerms = (e) => {
-    console.log('handleTerms')
-    console.log(e.target.checked)
+    console.log(this.state)
   }
 
   render() {
@@ -23,19 +25,27 @@ export default class Form extends Component {
               id = 'name'
               name = 'userName'
               placeholder = 'Introduce el nombre'
-              ref={inputElement => this.inputName = inputElement} />
+              onChange = {e => this.setState({inputName: e.target.value})}
+              ref={inputElement => this.inputName = inputElement} 
+              value = {this.state.inputName} />
           </p>
           <p>
             <label htmlFor='twitter' >Twitter: </label>
             <input
               id = 'twitter'
               name = 'twitterAccount'
-              placeholder = 'Introduce tu usuario de twitter' 
-              ref={inputElement => this.inputTwitter = inputElement} />
+              placeholder = 'Introduce tu usuario de twitter'
+              onChange = {e => this.setState({inputTwitter: e.target.value})}
+              ref={inputElement => this.inputTwitter = inputElement} 
+              value = {this.state.inputTwitter}/>
           </p>
           <p>
             <label>
-              <input onChange={this.hadleTerms} type='checkbox'/>
+              <input
+                id = 'terms'
+                onChange = {e => this.setState({inputTerms: e.target.checked})} 
+                type='checkbox'
+                checked = {this.state.inputTerms}/>
               Accepted terms
             </label>
           </p>
