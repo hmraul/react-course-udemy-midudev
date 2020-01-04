@@ -21,7 +21,12 @@ class Animal extends Component {
     : null
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props.animal !== nextProps.animal
+  }
+
   render() {
+    console.log('-> render')
     return (
       <div>
         <p>Selected {this.props.animal}</p>
@@ -40,7 +45,7 @@ class CicloDeActualizacion extends Component {
   _renderAnimalButton = (animal) => {
   return (
     <button 
-      disabled = {animal === this.state.animal}
+      // disabled = {animal === this.state.animal}
       key={animal} 
       onClick={() => this.setState({animal: animal})}>
       {animal}
