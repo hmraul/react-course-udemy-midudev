@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 import PropTypes from 'prop-types'
 
 const ANIMAL_IMAGES = {
@@ -8,7 +8,7 @@ const ANIMAL_IMAGES = {
 }
 const ANIMALS = Object.keys(ANIMAL_IMAGES)
 
-class Animal extends Component {
+class Animal extends PureComponent {
   static propTypes = {
     animal: PropTypes.oneOf(ANIMALS)
   }
@@ -19,10 +19,6 @@ class Animal extends Component {
     return (props.animal !== state.animal)
     ? {animal: props.animal, src: ANIMAL_IMAGES[props.animal]}
     : null
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return this.props.animal !== nextProps.animal
   }
 
   render() {
