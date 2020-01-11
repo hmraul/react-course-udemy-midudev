@@ -1,14 +1,14 @@
 import React from 'react'
-
+import BitCoinIndex from './BitCoinIndex'
 
 const BitCoinPresenter = (props) => {
   const bpi = props.bpi
-    return (
-      <div key={bpi.code}>
-         1 BTC is {bpi.rate}
-         <span> {bpi.code}</span>
-      </div>
-    )
+  
+  return(
+  Object.keys(bpi)
+      .map(currency => ( 
+        <BitCoinIndex key={currency} bpi = {bpi[currency]} />        
+  )))
 }
 
 export default BitCoinPresenter

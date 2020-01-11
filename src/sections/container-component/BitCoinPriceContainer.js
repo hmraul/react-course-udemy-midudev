@@ -16,10 +16,8 @@ class BitCoinPriceContainer extends Component {
 
   render() {    
     return (
-      Object.keys(this.state.bpi)
-      .map(currency => ( 
-        <BitCoinPresenter key={currency} bpi = {this.state.bpi[currency]} />        
-    )))
+        <BitCoinPresenter bpi = {this.state.bpi} />        
+    )
   }
 }
 
