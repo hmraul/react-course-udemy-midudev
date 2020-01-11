@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types'
 import './App.css';
-import BitCoinPrice from './sections/container-component/BitCoinPrice';
+// import BitCoinPrice from './sections/container-component/BitCoinPrice';
+import BitCoinPriceContainer from './sections/container-component/BitCoinPriceContainer';
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        <BitCoinPrice />       
+        {/* <BitCoinPrice /> */}
+        <h4>Bitcoin Price Index</h4>
+        <BitCoinPriceContainer />           
       </div>
     )
   }
